@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#090b12" />
+  <title>VOIDRUNNER — 3D Action Roguelite</title>
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="boot" class="overlay"><div class="panel"><div class="logo">VOID<span>RUNNER</span></div><p>Ładowanie rdzenia symulacji…</p><div class="loader"><i></i></div></div></div>
+  <div id="menu" class="overlay hidden"><div class="panel menu"><div class="logo">VOID<span>RUNNER</span></div><div class="subtitle">3D ACTION ROGUELITE</div>
+    <button id="startBtn">NOWA GRA</button><button id="continueBtn">WCZYTAJ</button><button id="controlsBtn">STEROWANIE</button><div id="menuInfo">10 stref • 10 broni • loot • bossowie • sekrety</div>
+  </div></div>
+  <div id="hud" class="hidden">
+    <div class="top"><div class="chip"><b>VOIDRUNNER</b><span id="zoneName">FLOATING RUINS</span></div><div class="chip">RUN <b id="runNo">1</b> / 10</div><div class="chip">CREDITS <b id="credits">0</b></div></div>
+    <div class="left"><div class="stat"><span>HP</span><div class="bar"><i id="hpBar"></i></div><b id="hpText">100 / 100</b></div><div class="stat"><span>ARMOR</span><div class="bar"><i id="armorBar"></i></div><b id="armorText">0</b></div><div class="weaponBox"><div id="weaponName">ARC PISTOL</div><div id="ammo">12 / 120</div><div class="mini">LPM OGNIA • R PRZEŁADOWANIE</div></div></div>
+    <div class="right"><div>LEVEL <b id="level">1</b></div><div>XP <b id="xp">0 / 100</b></div><div>KILLS <b id="kills">0</b></div><div>SECRETS <b id="secrets">0 / 3</b></div></div>
+    <div id="crosshair"><i></i></div><div id="feed"></div><div id="hint">WASD ruch • SHIFT sprint • SPACE skok/double jump • F dash • LPM strzał • RMB focus • E interakcja • I ekwipunek • M mapa • ESC pauza</div>
+    <div id="inventory" class="modal hidden"><div class="modalPanel"><h2>EKWIPUNEK</h2><div id="invGrid"></div><div class="skillRow"><button id="skillBtn">DRZEWKO UMIEJĘTNOŚCI</button><button id="saveBtn">ZAPISZ RUN</button></div></div></div>
+    <div id="skills" class="modal hidden"><div class="modalPanel"><h2>SKILL TREE</h2><div id="skillGrid"></div><button id="closeSkills">ZAMKNIJ</button></div></div>
+    <div id="map" class="modal hidden"><div class="modalPanel"><h2>MAPA STREF</h2><div id="mapGrid"></div><button id="closeMap">ZAMKNIJ</button></div></div>
+    <div id="pause" class="modal hidden"><div class="modalPanel"><h2>PAUZA</h2><button id="resumeBtn">WRÓĆ DO GRY</button><button id="savePause">ZAPISZ I WRÓĆ DO MENU</button></div></div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
