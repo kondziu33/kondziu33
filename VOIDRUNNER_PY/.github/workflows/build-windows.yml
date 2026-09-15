@@ -1,0 +1,29 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main, 'voidrunner/**' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r VOIDRUNNER_PY/requirements.txt
+      - name: Build MyGame.exe
+        working-directory: VOIDRUNNER_PY
+        run: python -m PyInstaller --noconfirm --clean VOIDRUNNER.spec
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: VOIDRUNNER-Windows-x64
+          path: VOIDRUNNER_PY/dist/MyGame.exe
